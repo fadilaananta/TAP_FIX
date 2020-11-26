@@ -161,6 +161,8 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
     }
 
 
+
+
     @Override
     public void onImageAnalyzed(ImageProxy imageProxy) {
         scan_btn.setOnClickListener(v -> {
@@ -175,8 +177,10 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
             @Override
             public void run() {
                 if(code != null && !code.isEmpty()){
+                    sendRequest.code = code;
                     kata.setText(code);
                 }
+                sendRequest.execute();
             }
         });
     }

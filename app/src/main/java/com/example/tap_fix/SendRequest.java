@@ -20,6 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 
 public class SendRequest extends AsyncTask<String, Void, String> {
+    private KitInterface kitInterface;
     String code;
     protected void onPreExecute(){}
 
@@ -40,7 +41,7 @@ public class SendRequest extends AsyncTask<String, Void, String> {
 
             //Passing scanned code as parameter
 
-            postDataParams.put("sdata","Fadil1");
+            postDataParams.put("sdata","kimcildekil");
 
 
             Log.e("params",postDataParams.toString());
@@ -56,10 +57,10 @@ public class SendRequest extends AsyncTask<String, Void, String> {
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
             writer.write(getPostDataString(postDataParams));
-
             writer.flush();
             writer.close();
             os.close();
+
 
             int responseCode=conn.getResponseCode();
 
@@ -72,7 +73,7 @@ public class SendRequest extends AsyncTask<String, Void, String> {
                 while((line = in.readLine()) != null) {
 
                     sb.append(line);
-                    break;
+
                 }
 
                 in.close();

@@ -23,6 +23,7 @@ public class AnalyzeBarcode {
     private static final String TAG = "BarcodeAnalyzer";
     private BarcodeScanner scanner;
     private KitInterface kitInterface;
+    private SendRequest sendRequest;
 
     public AnalyzeBarcode(KitInterface kitInterface){
         this.kitInterface = kitInterface;
