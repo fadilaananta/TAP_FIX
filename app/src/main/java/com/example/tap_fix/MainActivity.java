@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
 
     private static final String TAG = "BarcodeScannerActivity";
     @Nullable
+    private SendRequest sendRequest;
     private ImageAnalysis analysisUseCase;
     private PreviewView previewView;
     private Button scan_btn;
@@ -61,10 +62,12 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sendRequest = new SendRequest();
         cam_btn = findViewById(R.id.button_scan);
         cam_btn.setOnClickListener(v -> {
             setupCamera();
         });
+        scan_btn = findViewById(R.id.scan_btn);
         analyzeBarcode = new AnalyzeBarcode(this);
     }
 
@@ -160,7 +163,9 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
 
     @Override
     public void onImageAnalyzed(ImageProxy imageProxy) {
-        analyzeBarcode.analyzeBarcode(imageProxy);
+        scan_btn.setOnClickListener(v -> {
+            analyzeBarcode.analyzeBarcode(imageProxy);
+        });
     }
 
     public void sendScannedCode(String code){

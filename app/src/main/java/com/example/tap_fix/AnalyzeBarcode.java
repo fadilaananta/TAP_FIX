@@ -33,7 +33,7 @@ public class AnalyzeBarcode {
     }
 
     public void analyzeBarcode(ImageProxy imageProxy) {
-        Image mediaImage = imageProxy.getImage();
+        @SuppressLint("UnsafeExperimentalUsageError") Image mediaImage = imageProxy.getImage();
         InputImage inputImage = InputImage.fromMediaImage(mediaImage, imageProxy.getImageInfo().getRotationDegrees());
 
         scanner.process(inputImage).addOnFailureListener(e -> imageProxy.close());
@@ -41,9 +41,13 @@ public class AnalyzeBarcode {
             for (Barcode barcode: barcodes) {
                 Rect bounds = barcode.getBoundingBox();
                 Point[] corners = barcode.getCornerPoints();
-
                 String rawValue = barcode.getRawValue();
-                kitInterface.sendScannedCode(rawValue);
+                int valueType = barcode.getValueType();
+                if(valueType == Barcode.TYPE_URL){
+                    String url = barcode.getUrl().getUrl();
+                    kitInterface.sendScannedCode(url);
+                } else kitInterface.sendScannedCode(rawValue);
+
             }
             imageProxy.close();
         });
