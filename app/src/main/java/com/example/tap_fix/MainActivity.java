@@ -2,6 +2,7 @@ package com.example.tap_fix;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
@@ -10,7 +11,9 @@ import android.os.Looper;
 import android.util.Size;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity implements KitInterface, AnalyzeImage{
 
     private static final String TAG = "BarcodeScannerActivity";
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
     private final int REQUEST_CODE = 1;
     private AnalyzeBarcode analyzeBarcode;
     private ImageAnalyze imageAnalyze;
+//    private Button testlogin;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -67,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
         cam_btn.setOnClickListener(v -> {
             setupCamera();
         });
+        //testlogin = findViewById(R.id.testlogin);
+//        testlogin.setOnClickListener(v -> {
+//            sendMessage();
+//        });
         scan_btn = findViewById(R.id.scan_btn);
         analyzeBarcode = new AnalyzeBarcode(this);
     }
@@ -82,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
         imageAnalyze.isAnalysing = true;
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -180,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
                     sendRequest.code = code;
                     kata.setText(code);
                 }
-                sendRequest.execute();
+                //sendRequest.execute();
             }
         });
     }
