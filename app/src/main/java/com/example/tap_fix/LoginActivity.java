@@ -27,10 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     String name;
     String email;
+    EditText NIM;
+    String nim;
     private FirebaseAuth mAuth;
-
-
-
     String password;
 
     @Override
@@ -41,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         emailText = findViewById(R.id.email);
         passwordText = findViewById(R.id.password);
         namaText = findViewById(R.id.input_name);
+        NIM = findViewById(R.id.nomornim);
         loginButton = findViewById(R.id.button_login);
 
 
@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
+        nim = NIM.getText().toString();
         name = namaText.getText().toString();
         email = emailText.getText().toString();
         password = passwordText.getText().toString();
@@ -89,8 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "Kamu bukan anak TETI.",
                                     Toast.LENGTH_SHORT).show();
+
                             //updateUI(null);
                         }
 
@@ -156,6 +158,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public String getName() {
         return name;
+    }
+
+    public String getNim() {
+        return nim;
     }
 
     public String getEmail() {

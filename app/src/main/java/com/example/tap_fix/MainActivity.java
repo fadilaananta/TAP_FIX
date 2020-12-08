@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
                     sendRequest.code = code;
                     kata.setText(code);
                 }
-                //sendRequest.execute();
+                sendRequest.execute();
             }
         });
     }

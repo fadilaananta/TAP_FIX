@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -21,17 +22,20 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class SendRequest extends AsyncTask<String, Void, String> {
     private KitInterface kitInterface;
+    private LoginActivity loginActivity;
     String code;
     protected void onPreExecute(){}
 
     protected String doInBackground(String... arg0) {
 
+        loginActivity = new LoginActivity();
         try{
 
             //Enter script URL Here
             URL url = new URL(code);
 
             JSONObject postDataParams = new JSONObject();
+            JSONArray arr = new JSONArray();
 
             //int i;
             //for(i=1;i<=70;i++)
@@ -41,7 +45,8 @@ public class SendRequest extends AsyncTask<String, Void, String> {
 
             //Passing scanned code as parameter
 
-            postDataParams.put("sdata","kimcildekil");
+            postDataParams.put("name",loginActivity.getName());
+            postDataParams.put("nim",loginActivity.getNim());
 
 
             Log.e("params",postDataParams.toString());
@@ -85,6 +90,7 @@ public class SendRequest extends AsyncTask<String, Void, String> {
             }
         }
         catch(Exception e){
+            Log.d("TAG", "doInBackground: " + e.getMessage());
             return new String("Exception: " + e.getMessage());
         }
     }
