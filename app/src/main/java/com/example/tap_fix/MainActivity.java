@@ -12,7 +12,9 @@ import android.util.Size;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,10 +46,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity implements KitInterface, AnalyzeImage{
 
     private static final String TAG = "BarcodeScannerActivity";
     @Nullable
+    private SendRequest sendRequest;
     private ImageAnalysis analysisUseCase;
     private PreviewView previewView;
     private Button scan_btn;
@@ -58,16 +63,23 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
     private final int REQUEST_CODE = 1;
     private AnalyzeBarcode analyzeBarcode;
     private ImageAnalyze imageAnalyze;
+//    private Button testlogin;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sendRequest = new SendRequest();
         cam_btn = findViewById(R.id.button_scan);
         cam_btn.setOnClickListener(v -> {
             setupCamera();
         });
+        //testlogin = findViewById(R.id.testlogin);
+//        testlogin.setOnClickListener(v -> {
+//            sendMessage();
+//        });
+        scan_btn = findViewById(R.id.scan_btn);
         analyzeBarcode = new AnalyzeBarcode(this);
 
 
@@ -116,6 +128,8 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
         imageAnalyze.isAnalysing = true;
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -195,9 +209,13 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
     }
 
 
+
+
     @Override
     public void onImageAnalyzed(ImageProxy imageProxy) {
-        analyzeBarcode.analyzeBarcode(imageProxy);
+        scan_btn.setOnClickListener(v -> {
+            analyzeBarcode.analyzeBarcode(imageProxy);
+        });
     }
 
     public void sendScannedCode(String code){
@@ -207,8 +225,10 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
             @Override
             public void run() {
                 if(code != null && !code.isEmpty()){
+                    sendRequest.code = code;
                     kata.setText(code);
                 }
+                sendRequest.postData();
             }
         });
     }
