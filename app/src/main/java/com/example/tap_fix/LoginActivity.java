@@ -25,10 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordText;
     EditText namaText;
     Button loginButton;
-    String name;
+    public static String name;
     String email;
     EditText NIM;
-    String nim;
+    public static String nim;
     private FirebaseAuth mAuth;
     String password;
 
@@ -42,8 +42,6 @@ public class LoginActivity extends AppCompatActivity {
         namaText = findViewById(R.id.input_name);
         NIM = findViewById(R.id.nomornim);
         loginButton = findViewById(R.id.button_login);
-
-
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -70,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
-
         nim = NIM.getText().toString();
         name = namaText.getText().toString();
         email = emailText.getText().toString();
@@ -157,11 +154,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getNim() {
-        return nim;
+        return this.nim;
     }
 
     public String getEmail() {
