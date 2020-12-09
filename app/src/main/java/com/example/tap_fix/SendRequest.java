@@ -55,7 +55,7 @@ public class SendRequest{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Berhasil!",Toast.LENGTH_SHORT).show();
 
                     }
                 },
