@@ -3,4 +3,13 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="putihTanggung">#F4F3EE</color>
+    <color name="ijoLumut">#409B94</color>
+    <color name="abuItem">#353535</color>
+    <color name="merahTua">#AB1C21</color>
+    <color name="merahOren">#D83F31</color>
+    <color name="kuningTai">#DEA82B</color>
+    <color name="abuKolom">#D7D7D5</color>
+
 </resources>

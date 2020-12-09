@@ -2,12 +2,14 @@ package com.example.tap_fix;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Size;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Button;
@@ -31,6 +33,7 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 import com.example.tap_fix.KitInterface;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.mlkit.vision.barcode.Barcode;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
@@ -66,6 +69,40 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
             setupCamera();
         });
         analyzeBarcode = new AnalyzeBarcode(this);
+
+
+        //Initialize and assign variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //set home selected
+        bottomNavigationView.setSelectedItemId(R.id.scan);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Home.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.schedule:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Schedule.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.scan:
+                        return true;
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Profile.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     private void setupCamera() {
