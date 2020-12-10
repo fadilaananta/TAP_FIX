@@ -6,15 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Home extends AppCompatActivity {
+    private LoginActivity loginActivity;
+    private TextView namaHalo;
+    private TextView tanggal;
+    SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMM d yyyy");
+    String today = formatter.format(Calendar.getInstance().getTime());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        namaHalo = findViewById(R.id.namahalo);
+        tanggal = findViewById(R.id.tanggal);
+        namaHalo.setText("Halo, "+loginActivity.name+"!");
+        tanggal.setText(today);
 
         //Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
