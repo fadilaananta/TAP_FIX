@@ -6,15 +6,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Profile extends AppCompatActivity {
+    private LoginActivity loginActivity;
+    private TextView namaProfil;
+    private TextView nimProfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        namaProfil = findViewById(R.id.namaprofil);
+        nimProfil = findViewById(R.id.nimprofil);
+        namaProfil.setText(loginActivity.name);
+        nimProfil.setText(loginActivity.nim);
 
         //Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
