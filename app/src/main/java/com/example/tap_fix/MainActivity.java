@@ -15,6 +15,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements KitInterface, Ana
     private ImageAnalysis analysisUseCase;
     private PreviewView previewView;
     private Button scan_btn;
-    private Button cam_btn;
+    private ImageButton cam_btn;
     private TextView kata;
     private CameraSelector cameraSelector;
     private Camera camera;

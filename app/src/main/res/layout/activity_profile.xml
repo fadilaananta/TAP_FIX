@@ -7,12 +7,26 @@
     android:background="@color/putihTanggung"
     tools:context=".Profile">
 
+    <ImageView
+        android:layout_width="133dp"
+        android:layout_height="150dp"
+        android:src="@drawable/img_profileactivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093" />
+
     <TextView
         android:id="@+id/namaprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="profile"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="22sp"
+        android:textColor="@color/abuItem"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="profile"
+        android:fontFamily="@font/poppins_semibold"
+        android:paddingTop="14dp"
+        android:textColor="@color/abuItem"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,6 +49,7 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:cardBackgroundColor="@color/ijoLumut"
@@ -44,55 +62,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="40dp"
             android:paddingLeft="44dp"
-            >
+            android:paddingTop="40dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="left"
-                >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="34dp"
                     android:layout_height="34dp"
-                    android:src="@drawable/ic_lock"/>
+                    android:src="@drawable/ic_lock" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Privasi"
-                    android:textColor="@color/putihTanggung"
-                    android:textSize="18dp"
-                    android:paddingTop="7dp"
                     android:gravity="center_vertical"
-                    android:paddingLeft="50dp"/>
+                    android:paddingLeft="50dp"
+                    android:paddingTop="7dp"
+                    android:text="Privasi"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/putihTanggung"
+                    android:textSize="18dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="left"
+                android:orientation="horizontal"
                 android:paddingTop="40dp">
 
                 <ImageView
                     android:layout_width="34dp"
                     android:layout_height="34dp"
-                    android:src="@drawable/ic_baseline_account_circle_24"/>
+                    android:src="@drawable/ic_baseline_account_circle_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Akun"
-                    android:textColor="@color/putihTanggung"
-                    android:textSize="18dp"
-                    android:paddingTop="7dp"
                     android:gravity="center_vertical"
-                    android:paddingLeft="50dp"/>
+                    android:paddingLeft="50dp"
+                    android:paddingTop="7dp"
+                    android:text="Akun"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/putihTanggung"
+                    android:textSize="18dp" />
 
             </LinearLayout>
 

@@ -8,18 +8,18 @@
     android:background="@color/ijoLumut">
 
 
-
-
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
         android:text="Scan untuk melakukan presensi"
         android:textColor="@color/putihTanggung"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.24000001" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/baseQRCode"
@@ -33,39 +33,42 @@
         android:scaleType="fitCenter"
         app:cardBackgroundColor="@color/putihTanggung"
         app:cardCornerRadius="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47000003">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:adjustViewBounds="true"
-            app:layout_constraintDimensionRatio="1:1"
             android:maxWidth="225dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/qrcode_item" />
+            android:src="@drawable/qrcode_item"
+            app:layout_constraintDimensionRatio="1:1" />
 
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <ImageButton
         android:id="@+id/button_scan"
-        android:layout_width="137dp"
-        android:layout_height="73dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@color/ijoLumut"
+        android:fontFamily="@font/poppins_bold"
         android:foregroundGravity="bottom|center_horizontal"
+        android:src="@drawable/scan_button"
         android:text="scan"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintVertical_bias="0.8" />
 
 
-
-<!--    <androidx.appcompat.widget.Toolbar-->
+    <!--    <androidx.appcompat.widget.Toolbar-->
 <!--        android:id="@+id/toolbar"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -73,6 +76,17 @@
 <!--        android:minHeight="?attr/actionBarSize"-->
 <!--        android:theme="?attr/actionBarTheme" />-->
 
+
+    <ImageView
+        android:layout_width="165dp"
+        android:layout_height="119dp"
+        android:src="@drawable/img_scanactivity"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
